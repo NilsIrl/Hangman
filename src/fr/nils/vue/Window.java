@@ -41,21 +41,21 @@ public class Window extends JFrame {
 		newGameMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setContentPane(gamePane);
+				changePane(gamePane);
 			}
 		});
 		JMenuItem leaderboardMenuItem = new JMenuItem("Leaderboard");
 		leaderboardMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setContentPane(leaderboardPane);
+				changePane(leaderboardPane);
 			}
 		});
 		JMenuItem rulesMenuItem = new JMenuItem("Rules");
 		rulesMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setContentPane(rulesPane);
+				changePane(rulesPane);
 			}
 		});
 		file.add(newGameMenuItem);
@@ -65,12 +65,17 @@ public class Window extends JFrame {
 		aboutMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setContentPane(aboutPane);
+				changePane(aboutPane);
 			}
 		});
 		bar.add(file);
 		bar.add(aboutMenuItem);
 
 		this.setJMenuBar(bar);
+	}
+	private void changePane(JPanel pane) {
+		this.removeAll();
+		this.setContentPane(pane);
+		this.revalidate();
 	}
 }
