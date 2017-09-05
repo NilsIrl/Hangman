@@ -1,6 +1,8 @@
 package fr.nils.object;
 
-public class Score {
+import java.io.Serializable;
+
+public class Score implements Serializable{
 	private int numWord;
 	private int score;
 	private String name;
