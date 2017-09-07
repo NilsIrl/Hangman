@@ -15,7 +15,8 @@ import javax.swing.KeyStroke;
 public class Window extends JFrame {
 	private final int WIDTH = 900;
 	private final int HEIGHT = 700;
-
+	
+	private JPanel homePane = new HomePanel();
 	private JPanel gamePane = new GamePanel();
 	private JPanel leaderboardPane = new LeaderboardPanel();
 	private JPanel rulesPane = new RulesPanel();
@@ -23,12 +24,14 @@ public class Window extends JFrame {
 
 	public Window() {
 		this.setTitle("Hangman");
+		this.setResizable(false);
 
 		this.setSize(new Dimension(WIDTH, HEIGHT));
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.initMenuBar();
+		changePane(homePane);
 
 		this.setVisible(true);
 	}
@@ -36,6 +39,13 @@ public class Window extends JFrame {
 	private void initMenuBar() {
 		JMenuBar bar = new JMenuBar();
 		JMenu file = new JMenu("File");
+		JMenuItem homeMenuItem = new JMenuItem("Home");
+		homeMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				changePane(homePane);
+			}
+		});
 		JMenuItem newGameMenuItem = new JMenuItem("New Game");
 		newGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
 		newGameMenuItem.addActionListener(new ActionListener() {
@@ -74,8 +84,8 @@ public class Window extends JFrame {
 		this.setJMenuBar(bar);
 	}
 	private void changePane(JPanel pane) {
-		this.removeAll();
 		this.setContentPane(pane);
 		this.revalidate();
+		System.out.println("changed pane"); //debug
 	}
 }

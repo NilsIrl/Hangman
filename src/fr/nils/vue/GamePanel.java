@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 import fr.nils.object.Game;
 
-public class GamePanel extends JPanel implements Observer {
+public class GamePanel extends DefaultPanel implements Observer {
 	private JPanel keyboard = new JPanel();
 	private final String NUMWORDSTR = "Nombre de mot actuel : ";
 	private final String SCORESTR = "Votre score actuel est de : ";
@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Observer {
 		infos.add(numWord, BorderLayout.NORTH);
 		infos.add(score, BorderLayout.SOUTH);
 		jPanel.add(infos, BorderLayout.NORTH);
+		
 		
 		
 
